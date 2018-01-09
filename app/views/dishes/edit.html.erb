@@ -36,6 +36,15 @@
         <%= select_tag(:cuisine_id, options_from_collection_for_select(Cuisine.all, :id, :name, @dish.cuisine_id), :class => "form-control") %>
       </div>
 
+      <!-- Label and input for bookmark_id -->
+      <div class="form-group">
+        <label for="bookmark_id" class="control-label">
+          Bookmark
+        </label>
+
+        <%= select_tag(:bookmark_id, options_from_collection_for_select(Bookmark.all, :id, :venue_id, @dish.bookmark_id), :class => "form-control") %>
+      </div>
+
       <button class="btn btn-warning">
         Update Dish
       </button>

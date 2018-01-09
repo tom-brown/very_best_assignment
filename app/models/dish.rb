@@ -1,6 +1,10 @@
 class Dish < ApplicationRecord
   # Direct associations
 
+  belongs_to :bookmark,
+             :required => false,
+             :counter_cache => true
+
   belongs_to :cuisine
 
   has_many   :bookmarks,

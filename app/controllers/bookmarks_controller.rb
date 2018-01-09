@@ -32,6 +32,7 @@ class BookmarksController < ApplicationController
     @bookmark = Bookmark.new
 
     @bookmark.venue_id = params[:venue_id]
+    @bookmark.notes = params[:notes]
     @bookmark.dish_id = params[:dish_id]
     @bookmark.user_id = params[:user_id]
 
@@ -61,6 +62,7 @@ class BookmarksController < ApplicationController
     @bookmark = Bookmark.find(params[:id])
 
     @bookmark.venue_id = params[:venue_id]
+    @bookmark.notes = params[:notes]
     @bookmark.dish_id = params[:dish_id]
     @bookmark.user_id = params[:user_id]
 

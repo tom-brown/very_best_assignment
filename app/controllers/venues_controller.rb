@@ -1,7 +1,7 @@
 class VenuesController < ApplicationController
   def index
     @q = Venue.ransack(params[:q])
-    @venues = @q.result(:distinct => true).includes(:bookmarks, :neighborhood).page(params[:page]).per(10)
+    @venues = @q.result(:distinct => true).includes(:bookmarks, :neighborhood, :dishes).page(params[:page]).per(10)
     @location_hash = Gmaps4rails.build_markers(@venues.where.not(:address_latitude => nil)) do |venue, marker|
       marker.lat venue.address_latitude
       marker.lng venue.address_longitude
@@ -30,6 +30,7 @@ class VenuesController < ApplicationController
     @venue.name = params[:name]
     @venue.address = params[:address]
     @venue.neighborhood_id = params[:neighborhood_id]
+    @venue.bookmark_id = params[:bookmark_id]
 
     save_status = @venue.save
 
@@ -59,6 +60,7 @@ class VenuesController < ApplicationController
     @venue.name = params[:name]
     @venue.address = params[:address]
     @venue.neighborhood_id = params[:neighborhood_id]
+    @venue.bookmark_id = params[:bookmark_id]
 
     save_status = @venue.save
 

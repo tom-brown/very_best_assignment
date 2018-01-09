@@ -69,6 +69,15 @@
       <!-- Label and input for cuisine_id -->
       <input type="hidden" name="cuisine_id" value="<%= @cuisine.id %>">
 
+      <!-- Label and input for bookmark_id -->
+      <div class="form-group">
+        <label for="bookmark_id" class="control-label">
+          Bookmark
+        </label>
+
+        <input type="text" id="bookmark_id" name="bookmark_id" placeholder="Bookmark" class="form-control" value="">
+      </div>
+
       <button class="btn btn-block btn-success">
         Create Dish
       </button>

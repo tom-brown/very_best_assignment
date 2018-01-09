@@ -9,6 +9,11 @@
       <p class="lead">Narrow results:</p>
 
         <div class="form-group">
+    <%= f.label :notes_cont, "Notes contains" %>
+    <%= f.text_field :notes_cont, :class => "form-control", :placeholder => "Notes contains" %>
+  </div>
+
+<div class="form-group">
           <%= f.label :created_at, "Created at" %>
           <div class="row">
             <div class='col-md-6 mb-1'>
@@ -78,6 +83,7 @@
     <table class="table table-striped table-hover">
       <tr>
         <th>Venue</th>
+        <th>Notes</th>
         <th>Dish</th>
         <th>User</th>
         <th>Actions</th>
@@ -92,6 +98,7 @@
             </a>
           <% end %>
         </td>
+        <td><%= bookmark.notes %></td>
         <td>
           <% if bookmark.dish.present? %>
             <a href="/dishes/<%= bookmark.dish.id %>">

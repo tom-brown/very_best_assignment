@@ -14,20 +14,14 @@
         <% end %>
       </dd>
 
+      <dt>Notes</dt>
+      <dd><%= @bookmark.notes %></dd>
+
       <dt>Dish</dt>
       <dd>
         <% if @bookmark.dish.present? %>
           <a href="/dishes/<%= @bookmark.dish_id %>">
             <%= @bookmark.dish.name %>
-          </a>
-        <% end %>
-      </dd>
-
-      <dt>User</dt>
-      <dd>
-        <% if @bookmark.user.present? %>
-          <a href="/users/<%= @bookmark.user_id %>">
-            <%= @bookmark.user.email %>
           </a>
         <% end %>
       </dd>
@@ -38,14 +32,12 @@
       <a href="/bookmarks" class="btn btn-primary">
         Back
       </a>
-      <% if current_user == @bookmark.user %>
-        <a href="/bookmarks/<%= @bookmark.id %>/edit" class="btn btn-warning">
-          Edit
-        </a>
-        <a href="/delete_bookmark/<%= @bookmark.id %>" class="btn btn-danger" rel="nofollow">
-          Delete
-        </a>
-      <% end %>
+      <a href="/bookmarks/<%= @bookmark.id %>/edit" class="btn btn-warning">
+        Edit
+      </a>
+      <a href="/delete_bookmark/<%= @bookmark.id %>" class="btn btn-danger" rel="nofollow">
+        Delete
+      </a>
     </div>
   </div>
 </div>

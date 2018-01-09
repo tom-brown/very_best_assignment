@@ -27,17 +27,17 @@
         <%= select_tag(:venue_id, options_from_collection_for_select(Venue.all, :id, :name, @bookmark.venue_id), :class => "form-control") %>
       </div>
 
-      <!-- Label and input for dish_id -->
+      
+      
+
+      <!-- Label and input for notes -->
       <div class="form-group">
-        <label for="dish_id" class="control-label">
-          Dish
+        <label for="notes" class="control-label">
+          Notes
         </label>
 
-        <%= select_tag(:dish_id, options_from_collection_for_select(Dish.all, :id, :name, @bookmark.dish_id), :class => "form-control") %>
+        <input type="text" id="notes" name="notes" placeholder="Notes" class="form-control" value="<%= @bookmark.notes %>">
       </div>
-
-      
-      
 
       <button class="btn btn-warning">
         Update Bookmark

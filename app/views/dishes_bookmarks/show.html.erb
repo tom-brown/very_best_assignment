@@ -1,0 +1,40 @@
+<div class="page-header">
+  <h3>Dishes Bookmark #<%= @dishes_bookmark.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12 mb-2">
+    <dl class="dl-horizontal">
+      <dt>Dish</dt>
+      <dd>
+        <% if @dishes_bookmark.dish.present? %>
+          <a href="/dishes/<%= @dishes_bookmark.dish_id %>">
+            <%= @dishes_bookmark.dish.name %>
+          </a>
+        <% end %>
+      </dd>
+
+      <dt>Bookmark</dt>
+      <dd>
+        <% if @dishes_bookmark.bookmark.present? %>
+          <a href="/bookmarks/<%= @dishes_bookmark.bookmark_id %>">
+            <%= @dishes_bookmark.bookmark.venue_id %>
+          </a>
+        <% end %>
+      </dd>
+
+    </dl>
+
+    <div class="btn-group btn-group-justified">
+      <a href="/dishes_bookmarks" class="btn btn-primary">
+        Back
+      </a>
+      <a href="/dishes_bookmarks/<%= @dishes_bookmark.id %>/edit" class="btn btn-warning">
+        Edit
+      </a>
+      <a href="/delete_dishes_bookmark/<%= @dishes_bookmark.id %>" class="btn btn-danger" rel="nofollow">
+        Delete
+      </a>
+    </div>
+  </div>
+</div>

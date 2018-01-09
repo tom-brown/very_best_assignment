@@ -45,6 +45,15 @@
         <%= select_tag(:neighborhood_id, options_from_collection_for_select(Neighborhood.all, :id, :name, @venue.neighborhood_id), :class => "form-control") %>
       </div>
 
+      <!-- Label and input for bookmark_id -->
+      <div class="form-group">
+        <label for="bookmark_id" class="control-label">
+          Bookmark
+        </label>
+
+        <input type="text" id="bookmark_id" name="bookmark_id" placeholder="Bookmark" class="form-control" value="<%= @venue.bookmark_id %>">
+      </div>
+
       <button class="btn btn-success">
         Create Venue
       </button>

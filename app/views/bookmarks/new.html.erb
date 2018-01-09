@@ -27,6 +27,15 @@
         <%= select_tag(:venue_id, options_from_collection_for_select(Venue.all, :id, :name, @bookmark.venue_id), :class => "form-control") %>
       </div>
 
+      <!-- Label and input for notes -->
+      <div class="form-group">
+        <label for="notes" class="control-label">
+          Notes
+        </label>
+
+        <input type="text" id="notes" name="notes" placeholder="Notes" class="form-control" value="<%= @bookmark.notes %>">
+      </div>
+
       <!-- Label and input for dish_id -->
       <div class="form-group">
         <label for="dish_id" class="control-label">

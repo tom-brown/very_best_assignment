@@ -3,6 +3,7 @@ class CreateDishes < ActiveRecord::Migration
     create_table :dishes do |t|
       t.string :name
       t.integer :cuisine_id
+      t.integer :bookmark_id
 
       t.timestamps
 

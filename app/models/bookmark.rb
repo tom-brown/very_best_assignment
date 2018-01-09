@@ -1,6 +1,9 @@
 class Bookmark < ApplicationRecord
   # Direct associations
 
+  has_many   :dishes,
+             :dependent => :nullify
+
   belongs_to :dish
 
   belongs_to :venue,

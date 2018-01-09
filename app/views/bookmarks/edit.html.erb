@@ -39,6 +39,15 @@
       
       
 
+      <!-- Label and input for notes -->
+      <div class="form-group">
+        <label for="notes" class="control-label">
+          Notes
+        </label>
+
+        <input type="text" id="notes" name="notes" placeholder="Notes" class="form-control" value="<%= @bookmark.notes %>">
+      </div>
+
       <button class="btn btn-warning">
         Update Bookmark
       </button>

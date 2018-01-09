@@ -74,6 +74,7 @@
       <tr>
         <th>Name</th>
         <th>Cuisine</th>
+        <th>Bookmark</th>
         <th>Actions</th>
       </tr>
 
@@ -84,6 +85,13 @@
           <% if dish.cuisine.present? %>
             <a href="/cuisines/<%= dish.cuisine.id %>">
               <%= dish.cuisine.name %>
+            </a>
+          <% end %>
+        </td>
+        <td>
+          <% if dish.bookmark.present? %>
+            <a href="/bookmarks/<%= dish.bookmark.id %>">
+              <%= dish.bookmark.venue_id %>
             </a>
           <% end %>
         </td>

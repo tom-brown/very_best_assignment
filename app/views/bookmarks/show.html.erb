@@ -14,15 +14,6 @@
         <% end %>
       </dd>
 
-      <dt>Dish</dt>
-      <dd>
-        <% if @bookmark.dish.present? %>
-          <a href="/dishes/<%= @bookmark.dish_id %>">
-            <%= @bookmark.dish.name %>
-          </a>
-        <% end %>
-      </dd>
-
       <dt>User</dt>
       <dd>
         <% if @bookmark.user.present? %>
@@ -31,6 +22,9 @@
           </a>
         <% end %>
       </dd>
+
+      <dt>Notes</dt>
+      <dd><%= @bookmark.notes %></dd>
 
     </dl>
 
@@ -47,5 +41,90 @@
         </a>
       <% end %>
     </div>
+  </div>
+</div>
+
+<!-- A Bookmark has many dishes_bookmarks -->
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-info">
+        Dishes Bookmarks
+      </li>
+
+      <% @bookmark.dishes_bookmarks.each do |dishes_bookmark| %>
+        <li class="list-group-item">
+          <a href="/dishes_bookmarks/<%= dishes_bookmark.id %>">
+            <%= dishes_bookmark.dish_id %>
+          </a>
+          <div class="btn-group btn-group-xs pull-right">
+            <a href="/dishes_bookmarks/<%= dishes_bookmark.id %>" class="btn btn-primary">
+              <i class="fa fa-search-plus"></i>
+            </a>
+            <a href="/dishes_bookmarks/<%= dishes_bookmark.id %>/edit" class="btn btn-warning">
+              <i class="fa fa-edit"></i>
+            </a>
+            <a href="/delete_dishes_bookmark/<%= dishes_bookmark.id %>" class="btn btn-danger" rel="nofollow">
+              <i class="fa fa-trash-o"></i>
+            </a>
+          </div>
+        </li>
+      <% end %>
+
+      <li class="list-group-item">
+        <form action="/create_dishes_bookmark" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for dish_id -->
+      <div class="form-group">
+        <label for="dish_id" class="control-label">
+          Dish
+        </label>
+
+        <%= select_tag(:dish_id, options_from_collection_for_select(Dish.all, :id, :name), :class => "form-control") %>
+      </div>
+
+      <!-- Label and input for bookmark_id -->
+      <input type="hidden" name="bookmark_id" value="<%= @bookmark.id %>">
+
+      <button class="btn btn-block btn-success">
+        Create Dishes Bookmark
+      </button>
+    </form>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<!-- A Bookmark has many dishes -->
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-info">
+        Dishes
+      </li>
+
+      <% @bookmark.dishes.each do |dish| %>
+        <li class="list-group-item">
+          <a href="/dishes/<%= dish.id %>">
+            <%= dish.name %>
+          </a>
+          <div class="btn-group btn-group-xs pull-right">
+            <a href="/dishes/<%= dish.id %>" class="btn btn-primary">
+              <i class="fa fa-search-plus"></i>
+            </a>
+            <a href="/dishes/<%= dish.id %>/edit" class="btn btn-warning">
+              <i class="fa fa-edit"></i>
+            </a>
+            <a href="/delete_dish/<%= dish.id %>" class="btn btn-danger" rel="nofollow">
+              <i class="fa fa-trash-o"></i>
+            </a>
+          </div>
+        </li>
+      <% end %>
+    </ul>
   </div>
 </div>

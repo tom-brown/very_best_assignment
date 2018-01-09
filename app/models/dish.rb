@@ -3,10 +3,14 @@ class Dish < ApplicationRecord
 
   belongs_to :cuisine
 
-  has_many   :bookmarks,
+  has_many   :dishes_bookmarks,
              :dependent => :destroy
 
   # Indirect associations
+
+  has_many   :bookmarks,
+             :through => :dishes_bookmarks,
+             :source => :bookmark
 
   # Validations
 
